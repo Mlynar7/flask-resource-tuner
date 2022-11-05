@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6023ae4e-a738-44aa-8a33-c3f64125bcd1" name="Changes" comment="try demo">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,7 @@
       <workItem from="1667550014139" duration="10242000" />
       <workItem from="1667645290492" duration="6832000" />
       <workItem from="1667654555411" duration="265000" />
-      <workItem from="1667654828317" duration="219000" />
+      <workItem from="1667654828317" duration="278000" />
     </task>
     <task id="LOCAL-00001" summary="finish get method">
       <created>1667557758026</created>
@@ -147,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667651115638</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="try demo">
+      <created>1667655061715</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667655061715</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
