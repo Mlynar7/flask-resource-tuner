@@ -1,7 +1,7 @@
-# LWOT
+# flask-restful-tuner
 
 #### Description
-leave-work-on-time
+flask-restful-tuner
 
 #### Software Architecture
 Software architecture description
