@@ -30,7 +30,7 @@ class BaseResource(Resource):
         if schema:
             self._validate_data_, errors = validate_schema(schema, request_data)
             if errors:
-                logger.info(errors)
+                logger.error(errors)
                 return SysException(message="SysMsg_YfPjErtc6",
                                     status_code=HTTPStatus.BAD_REQUEST.value)
         return super().dispatch_request(*args, **kwargs)

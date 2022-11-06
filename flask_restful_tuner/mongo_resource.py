@@ -1,10 +1,10 @@
-import logging as logger
 from http import HTTPStatus
 from schema import Schema
 from marshmallow_mongoengine import ModelSchema
 
-from flask_restful_tuner import BaseResource
-from flask_restful_tuner import SysException
+from flask_restful_tuner.resource import BaseResource
+from flask_restful_tuner.exception import SysException
+from flask_restful_tuner import logger
 
 FILTER_OPERATOR_MAP = {
     ">": "__gt",
