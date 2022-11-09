@@ -5,7 +5,7 @@ from flask_restful_tuner.utils import now_timestamp
 
 
 class AutoUpdateDocument(DynamicDocument):
-    meta = {"abstract": True, "ordering": "created_time"}
+    meta = {"abstract": True, "ordering": "-created_time"}
     updated_time = IntField()
     created_time = IntField()
 
