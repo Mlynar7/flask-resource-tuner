@@ -1,6 +1,7 @@
 from enum import Enum
 from flask_restful_tuner.model import AutoUpdateDocument
-from mongoengine.fields import FloatField, StringField, DateTimeField, EnumField, ListField, DictField, IntField
+from marshmallow_mongoengine.fields import Float, String, DateTime, List, Dict, Integer
+from marshmallow_mongoengine.fields import Enum as EnumField
 
 
 class Gender(Enum):
@@ -9,18 +10,18 @@ class Gender(Enum):
     Other = "O"
 
 
-class PetInfo(DictField):
-    name = StringField()
-    age = IntField()
+class PetInfo(Dict):
+    name = String()
+    age = Integer()
 
 
 class ExampleUsers(AutoUpdateDocument):
     meta = {"collection": "users_collection"}
-    name = StringField()
-    phone = StringField()
-    birthday = DateTimeField()
-    height = FloatField()
-    weight = FloatField()
-    email = StringField()
+    name = String()
+    phone = String()
+    birthday = DateTime()
+    height = Float()
+    weight = Float()
+    email = String()
     gender = EnumField(Gender, choices=[Gender.Male, Gender.Female, Gender.Other])
-    pets = ListField(PetInfo())
+    pets = List(PetInfo())

@@ -16,7 +16,7 @@ MongoEngine(app)
 
 # load api
 api = flask_restful.Api(app)
-api.add_resource(DemoUserAPI, "/user/")
+api.add_resource(DemoUserAPI, "/user")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
