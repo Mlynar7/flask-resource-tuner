@@ -33,6 +33,8 @@ class BaseResource(Resource):
                 logger.error(errors)
                 raise SysException(message="SysMsg_YfPjErtc6",
                                    status_code=HTTPStatus.BAD_REQUEST.value)
+        else:
+            self._validate_data_ = {}
         return super().dispatch_request(*args, **kwargs)
 
     def get(self):
