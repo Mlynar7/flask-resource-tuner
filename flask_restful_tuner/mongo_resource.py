@@ -58,19 +58,19 @@ class MongoModelResource(BaseResource):
         instance, errors = self._create_schema_.load(self._validate_data_)
         if errors:
             logger.error(errors)
-            return SysException(message="SysMsg_KbjM8gnOq", status_code=HTTPStatus.BAD_REQUEST.value)
+            raise SysException(message="SysMsg_KbjM8gnOq", status_code=HTTPStatus.BAD_REQUEST.value)
         instance.save()
         data, errors = self._detail_schema_.dump(instance)
         if errors:
             logger.error(errors)
-            return SysException(message="SysMsg_gTvqCf1tl", status_code=HTTPStatus.BAD_REQUEST.value)
+            raise SysException(message="SysMsg_gTvqCf1tl", status_code=HTTPStatus.BAD_REQUEST.value)
         return data
 
     def delete(self):
         pk = self._validate_data_.get(self._pk_)
         instance = self._model_.objects.filter(pk=pk).first()
         if not instance:
-            return SysException(message="SysMsg_J0y5Hr8RA", status_code=HTTPStatus.NOT_FOUND.value)
+            raise SysException(message="SysMsg_J0y5Hr8RA", status_code=HTTPStatus.NOT_FOUND.value)
         instance.delete()
 
     def prepare_for_update(self, instance):
@@ -79,18 +79,18 @@ class MongoModelResource(BaseResource):
     def put(self):
         instance = self._model_.objects.filter(pk=self._validate_data_.pop(self._pk_)).first()
         if not instance:
-            return SysException(message="SysMsg_ihwnxWCk1", status_code=HTTPStatus.NOT_FOUND.value)
+            raise SysException(message="SysMsg_ihwnxWCk1", status_code=HTTPStatus.NOT_FOUND.value)
 
         instance, errors = self._update_schema_.update(instance, self.prepare_for_update(instance))
         if errors:
             logger.error(errors)
-            return SysException(message="SysMsg_dhfRSWtnj", status_code=HTTPStatus.BAD_REQUEST.value)
+            raise SysException(message="SysMsg_dhfRSWtnj", status_code=HTTPStatus.BAD_REQUEST.value)
 
         instance.save()
         data, errors = self._detail_schema_.dump(instance)
         if errors:
             logger.error(errors)
-            return SysException(message="SysMsg_fJ6rUZxNY", status_code=HTTPStatus.BAD_REQUEST.value)
+            raise SysException(message="SysMsg_fJ6rUZxNY", status_code=HTTPStatus.BAD_REQUEST.value)
         return data
 
     def patch(self):
@@ -117,7 +117,7 @@ class MongoModelResource(BaseResource):
             data, errors = self._detail_schema_.dump(instance)
             if errors:
                 logger.error(errors)
-                return SysException(message="SysMsg_R6GlHOdZ0", status_code=HTTPStatus.BAD_REQUEST.value)
+                raise SysException(message="SysMsg_R6GlHOdZ0", status_code=HTTPStatus.BAD_REQUEST.value)
             return data
         else:
             page = self._validate_data_.get("page", 1)
@@ -128,7 +128,7 @@ class MongoModelResource(BaseResource):
                 data, errors = self._list_item_schema_.dump(item)
                 if errors:
                     logger.error(errors)
-                    return SysException(message="SysMsg_jHBdky60Q", status_code=HTTPStatus.BAD_REQUEST.value)
+                    raise SysException(message="SysMsg_jHBdky60Q", status_code=HTTPStatus.BAD_REQUEST.value)
                 ret_list.append(data)
 
             return {

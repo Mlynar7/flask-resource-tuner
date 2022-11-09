@@ -1,7 +1,7 @@
 from flask_mongoengine import DynamicDocument
 from mongoengine.fields import IntField
 
-from flask_restful_tuner import now_timestamp
+from flask_restful_tuner.utils import now_timestamp
 
 
 class AutoUpdateDocument(DynamicDocument):
