@@ -23,6 +23,9 @@ class MongoModelResource(BaseResource):
     # db model
     _model_ = None
 
+    # model schema
+    _model_schema_ = None
+
     # list response schema
     _list_item_schema_: Schema = None
 
@@ -47,20 +50,20 @@ class MongoModelResource(BaseResource):
 
     # validate
     _validate_schemas_ = {
-        "post": _create_schema_,
-        "get": _query_schema_,
-        "put": _update_schema_,
-        "patch": _update_schema_,
+        "post": "_create_schema_",
+        "get": "_query_schema_",
+        "put": "_update_schema_",
+        "patch": "_update_schema_",
         "delete": None
     }
 
     def post(self):
-        instance, errors = self._create_schema_.load(self._validate_data_)
+        instance, errors = self._model_schema_.load(self._validate_data_)
         if errors:
             logger.error(errors)
             raise SysException(message="SysMsg_KbjM8gnOq", status_code=HTTPStatus.BAD_REQUEST.value)
         instance.save()
-        data, errors = self._detail_schema_.dump(instance)
+        data, errors = self._model_schema_.dump(instance) if not self._detail_schema_ else None
         if errors:
             logger.error(errors)
             raise SysException(message="SysMsg_gTvqCf1tl", status_code=HTTPStatus.BAD_REQUEST.value)
@@ -144,8 +147,10 @@ class MongoModelSchemaResource(MongoModelResource):
     def dispatch_request(self, *args, **kwargs):
         meta = type("Meta", (object,), dict(model=self._model_))
         schema = type("Schema", (ModelSchema,), dict(Meta=meta))
-        self._update_schema_ = schema()
-        self._create_schema_ = schema()
-        self._query_schema_ = schema()
-        self._detail_schema_ = schema()
+
+        self._model_schema_ = schema()
+        self._create_schema_ = self._create_schema_ or schema()
+        # self._query_schema_ = self._query_schema_ or schema(many=True)
+        # self._update_schema_ = schema()
+        # self._detail_schema_ = schema()
         return super().dispatch_request(*args, **kwargs)

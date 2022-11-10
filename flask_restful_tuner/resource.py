@@ -26,9 +26,9 @@ class BaseResource(Resource):
 
         request_data = request.json or json.loads(request.data) \
             if request.method.lower() not in ["get", "delete"] else request.args.to_dict()
-        schema = self._validate_schemas_.get(request.method.lower())
-        if schema:
-            self._validate_data_, errors = validate_schema(schema, request_data)
+        schema_attr = self._validate_schemas_.get(request.method.lower())
+        if schema_attr:
+            self._validate_data_, errors = validate_schema(getattr(self, schema_attr), request_data)
             if errors:
                 logger.error(errors)
                 raise SysException(message="SysMsg_YfPjErtc6",
