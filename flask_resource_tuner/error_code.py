@@ -2,7 +2,7 @@ import os
 import json
 import random
 
-from flask_restful_tuner.setting import Config
+from flask_resource_tuner.setting import Config
 
 ERRORS = dict()
 DEFAULT_SYS_ERR_FILE = "error_message/en_error_msg.json"

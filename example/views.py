@@ -1,7 +1,7 @@
 import datetime
 
 from schema import Schema, And, Optional, Use, Regex
-from flask_restful_tuner import MongoModelSchemaResource
+from flask_resource_tuner import MongoModelSchemaResource
 
 from example.models import ExampleUsers, Gender
 

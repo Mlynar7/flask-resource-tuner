@@ -1,5 +1,5 @@
 from enum import Enum
-from flask_restful_tuner.model import AutoUpdateDocument
+from flask_resource_tuner.model import AutoUpdateDocument
 from marshmallow_mongoengine.fields import Float, String, DateTime, List, Dict, Integer
 from marshmallow_mongoengine.fields import Enum as EnumField
 

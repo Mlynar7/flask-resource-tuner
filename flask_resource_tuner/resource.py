@@ -4,8 +4,8 @@ from http import HTTPStatus
 from flask import request
 from flask_restful import Resource
 
-from flask_restful_tuner.validator import validate_schema
-from flask_restful_tuner.exception import SysException
+from flask_resource_tuner.validator import validate_schema
+from flask_resource_tuner.exception import SysException
 
 METHODS = ["get", "post", "put", "patch", "delete"]
 
